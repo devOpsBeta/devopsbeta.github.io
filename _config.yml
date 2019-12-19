@@ -11,6 +11,13 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://devopsbeta.com"
 github_username:  devopsbeta
 
+
+navbar-links:
+  Linux: "./linux"
+  Ansible: "./ansible
+  
+  
+  
 # Build settings
 markdown: kramdown
 theme: minima
