@@ -28,7 +28,7 @@ plugins:
 collections:
   linux:
     output: true
-    permalink: /cupcakes/:path/
+    permalink: /linux/:path/
    ansible: 
      output: true
      permalink: /ansible/:path/
