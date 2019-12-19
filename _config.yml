@@ -31,12 +31,12 @@ collections:
   linux:
     output: true
     permalink: /linux/:path/
-   ansible: 
-     output: true
-     permalink: /ansible/:path/
-   devops:
-     output: true
-     permalink: /devops/:path/ 
+  ansible: 
+    output: true
+    permalink: /ansible/:path/
+  devops:
+    output: true
+    permalink: /devops/:path/ 
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
