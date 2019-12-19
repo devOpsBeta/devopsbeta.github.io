@@ -16,7 +16,18 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-permalink: /:categories/:title.html
+
+
+collections:
+  linux:
+    output: true
+    permalink: /cupcakes/:path/
+   ansible: 
+     output: true
+     permalink: /ansible/:path/
+   devops:
+     output: true
+     permalink: /:path 
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
