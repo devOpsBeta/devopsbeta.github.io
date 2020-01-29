@@ -3,6 +3,7 @@ layout: post
 title:  "Vim Quick Reference v2"
 date:   2019-08-07 21:43:04 -0500
 categories: vi, vim, linux
+permalink: /linux/vim
 ---
 
 ## from command mode:
