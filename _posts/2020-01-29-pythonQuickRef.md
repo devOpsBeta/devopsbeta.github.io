@@ -6,6 +6,11 @@ categories: python
 permalink: /python/guide
 ---
 
+## Installing tk for python GUIs
+```
+dnf install python3-tkinter
+```
+
 ## Making virtual enviroment
 
 This keeps modules in a container so system python modules are not touched. It is good practice to use virutal environments when using non native modules.
@@ -35,10 +40,17 @@ pip install -r requirements.txt
 
 ```
 
+
+
 ## general python syntax
 ```
 # Setting string varible 
 var = "vaule"
+
+# Setting var to list
+listvar = ["value1","value2","value3"]
+
+
 
 # if / else
 if <true>:
@@ -46,6 +58,15 @@ if <true>:
   print('result is true')
 else: 
   print('result is false')
+
+
+# while
+i = 0
+while i < 23:
+  print("tick")
+  i += 1
+
+
 
 
 ```
