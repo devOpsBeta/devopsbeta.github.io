@@ -43,9 +43,15 @@ ansible all -m ping -u <username>
 ```
 
 ## setting up elevated privileges on hosts or alternative that will prompt for sudo pass
+```
 echo "<username>   ALL=(ALL)       NOPASSWD: ALL" > /etc/sudoers.d/ansible
+
 or 
 on ansible system: 
 you can modify your ansible.cfg by adding 
 ask_sudo_pass = True
+
+or 
+-K flag when using ansible-playbook 
+```
   
