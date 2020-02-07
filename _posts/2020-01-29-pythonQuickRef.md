@@ -3,6 +3,7 @@ layout: post
 title:  "Python 3 Quick Reference Guide"
 date:   2020-01-29 09:43:04 -0500
 categories: python
+featured-image: roll-up-doors.jpg
 permalink: /python/guide
 ---
 
