@@ -153,10 +153,21 @@ JENKINSFILE
 ## setting up first job in jenkins
 
 
+make a new build > select pipeline > poll scm > insert the following ( this will poll every min, adjust as needed)
+```
+* * * * *
+```
+```
+advance Pipeline options to set: 
 
+pipeline > definition - select pipeline script from SCM > http://172.18.0.1:8000/devops/betapy.git (this was mine default docker IP for the system hosting containers)  
 
+add your creds to repo
 
+set scipt path to Jenkinsfile
+```
 
+Now manually run the job in jenkins and make sure the build completes without issues. 
 
 
 
