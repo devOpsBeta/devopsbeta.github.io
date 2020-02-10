@@ -1,0 +1,164 @@
+This is a lab that will walk you through getting a CICD setup in a dev environment. Will be adding more info as lab gets more comprehensive.
+
+First we need to have docker and docker compose installed on our system. This will use docker prefab containers for this example. I will post how to setup manually on VM later on.
+
+Docker images that will be used:
+    - gitlab/gitlab-cc
+
+
+Create a project directory to house the docker-compose file and volumes and cd into it.
+
+
+This will be the docker-compose.yml file we will be using. The container for jenkins must be ran as root if running on a mac os. I will break down what each section does in comments below:
+
+```
+
+version: '3'
+services:
+  jenkins:
+    restart: always
+    user: root
+    image: 4oh4/jenkins-docker
+    volumes:
+      - ./data/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+  gitlab:
+    restart: always
+    image: gitlab/gitlab-ce
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        gitlab_rails['gitlab_shell_ssh_port'] = 8822
+    ports:
+      - "8000:80"
+      - "8022:22"
+    volumes:
+      - ./data/gitlab:/var/opt/gitlab
+      - ./config/gitlab:/etc/gitlab
+
+```
+
+After we finish with the compose file we will need to build and deploy the containers. This is done with docker-compose up -d , The d is for detached mode so it will not run in foreground of terminal session.
+
+
+
+```
+Step 1 - docker-compose up -d
+
+## Getting Jenkins Setup
+Step 2 - Open 127.0.0.1:8080 in web browser or <ipaddy>:8080. It should prompt for password and give you the file path. If you didn't modify the docker-compose file you can get the password by:
+    Step 2A - cat data/jenkins_home/secrets/initialAdminPassword
+
+Step 3 - select install recommended plug ins or select the ones you wish to install
+
+Step 4 - create admin user
+
+
+## Getting gitlab Setup
+Step 5 - go to http://127.0.0.1:8000/  and setup root password and create user account
+
+Step 6 - create an empty repo and setup your keys on the system you will be developing on.
+
+Step 7 - clone repo to local system - modify user and project name to match what you created.
+
+git clone http://127.0.0.1:8000/devops/betapy.git
+
+
+
+```
+
+
+Next part will be setting up a simple python3 calculator to test our enviroment. You will need python 3 on the system you copied the repo to.
+
+first create python3 venv
+```
+python3 -m venv venv
+. venv/bin/activate
+
+# now lets install some modules for testing
+pip install pytest pytest-cov flake8
+
+
+# now lets record what versions of modules of python packages so when we automate the build process we will have matching versions
+pip freeze > requirements.txt
+
+
+```
+
+We will need cal.py file
+```
+# simple add and subtraction calculator
+
+def add(first_num, second_num):
+    return first_num + second_num
+
+
+def sub(first_num, second_num):
+    return first_num - second_num
+```
+
+Then the test_cal.py file
+```
+import cal
+
+class TestCal:
+    def test_add(self):
+        assert 4 == cal.add(2,2)
+    def test_sub(self):
+        assert 2 == cal.sub(4,2)
+```
+
+Now lets use pytest to test our app.
+```
+pytest -v
+
+```
+You should see Passed if not look for any syntax errors
+
+
+Now lets commit to master branch
+```
+git add .
+git commit -m "added requirements.txt and simple calulator py script with test script"
+git push origin master
+```
+
+next step is to add Jenkinsfile to the root dir of repo
+```
+cat <<-'JENKINSFILE' > Jenkinsfile
+pipeline {
+  agent { docker { image 'python:3.7.2' } }
+  stages {
+    stage('build') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
+    }
+    stage('test') {
+      steps {
+        sh 'pytest -v'
+      }   
+    }
+  }
+}
+JENKINSFILE
+
+```
+
+
+
+
+## setting up first job in jenkins
+
+
+
+
+
+
+
+
+
+
+
