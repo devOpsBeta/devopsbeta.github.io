@@ -11,15 +11,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://devopsbeta.com"
 github_username:  devopsbeta
 
-
-navbar-links:
-  DevOps: "./devops"
-  Linux: "./linux"
-  Ansible: "./ansible"
-  
-  
-  
-  
 # Build settings
 markdown: kramdown
 theme: minima
@@ -27,17 +18,6 @@ show_excerpts: true
 plugins:
   - jekyll-feed
 
-
-collections:
-  linux:
-    output: true
-    permalink: /linux/:path/
-  ansible: 
-    output: true
-    permalink: /ansible/:path/
-  devops:
-    output: true
-    permalink: /devops/:path/ 
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
