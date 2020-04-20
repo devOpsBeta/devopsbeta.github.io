@@ -1,7 +1,7 @@
 ---
-layout:post
+layout: post
 title: "CentOS 7- Apache | httpd - gitea"
-date: "2019-01-18"
+date: "2019-01-18
 categories: linux
 ---
 
