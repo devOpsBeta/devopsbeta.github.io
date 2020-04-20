@@ -1,6 +1,7 @@
 ---
 title: "Recover Root Password RHEL/CentOS 7"
 date: "2017-02-05"
+categories: linux
 ---
 
 1. Boot up server
