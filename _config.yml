@@ -10,5 +10,6 @@ github_username:  devopsbeta
 markdown: kramdown
 theme: minima
 show_excerpts: true
+permalink: none
 plugins:
   - jekyll-feed
