@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Ansible Playbook Skel"
+date:   2019-01-18 09:43:04 -0500
+categories: ansible
+permalink: /ansible/playbookSkel
+---
+```
+# name of playbook
+- name:   
+# what hosts to run against
+  hosts:
+# sets execution order
+  order:
+# for custom ssh port
+  port:
+# user on the remote system
+  remote_user:
+# bool for elevated privs
+  become:
+# method with elevated privs
+  become_method: <sudo (default), dzdo (centrify)>
+# enviroment variables  
+  environment:
+# vars 
+  vars:
+    usrname: devopsbeta
+# var file 
+  vars_files:
+# bool for turning on gather_facts
+  gather_facts:
+# runs before roles
+  pre_tasks:
+# runs before tasks  
+  roles:
+# runs after roles  
+  tasks:
+    include_role ( if you want to be able to execute roles from within playbook with executed inline vs being the next executed after pre_tasks)
+## runs after roles and tasks  
+  post_tasks:
+## handlers only run if task is ran
+  handlers:
+
+```
+

@@ -3,7 +3,6 @@ layout: post
 title:  "Python 3 Quick Reference Guide"
 date:   2020-01-29 09:43:04 -0500
 categories: python
-featured-image: roll-up-doors.jpg
 permalink: /python/guide
 ---
 
@@ -45,7 +44,7 @@ pip install -r requirements.txt
 
 ## general python syntax
 ```
-# Setting string varible 
+# Setting string varible
 var = "vaule"
 
 # Setting var to list
@@ -57,7 +56,7 @@ listvar = ["value1","value2","value3"]
 if <true>:
   # printing string
   print('result is true')
-else: 
+else:
   print('result is false')
 
 
